@@ -1,0 +1,130 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Vilagername')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-vilagername" data-rule="required" class="form-control" name="row[vilagername]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-phone" data-rule="required" class="form-control" name="row[phone]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sex')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sex" data-rule="required" class="form-control" name="row[sex]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Birthday')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-birthday" class="form-control" name="row[birthday]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Age')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-age" class="form-control" name="row[age]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Idcode')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-idcode" data-rule="required" class="form-control" name="row[idcode]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Edu_green')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-edu_green" class="form-control selectpicker" name="row[edu_green]">
+                {foreach name="eduGreenList" item="vo"}
+                    <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Marriage')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-marriage" class="form-control" name="row[marriage]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Move_in_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-move_in_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[move_in_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Move_out_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-move_out_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[move_out_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('U_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-u_status" class="form-control" name="row[u_status]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" class="form-control" name="row[status]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gro_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-gro_id" data-rule="required" data-source="gro/index" class="form-control selectpage" name="row[gro_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fam_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fam_id" data-rule="required" data-source="fam/index" class="form-control selectpage" name="row[fam_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Allocation_cate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-allocation_cate" class="form-control" name="row[allocation_cate]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Allocation_start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-allocation_start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[allocation_start_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Allocation_end_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-allocation_end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[allocation_end_time]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Family_move')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-family_move" class="form-control" name="row[family_move]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Author')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-author" data-rule="required" class="form-control" name="row[author]" type="number">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
