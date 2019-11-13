@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\register;
 
 use app\common\controller\Backend;
 
@@ -14,14 +14,14 @@ class Vilager extends Backend
     
     /**
      * Vilager模型对象
-     * @var \app\admin\model\Vilager
+     * @var \app\admin\model\register\Vilager
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\Vilager;
+        $this->model = new \app\admin\model\register\Vilager;
         $this->view->assign("sexList", $this->model->getSexList());
         $this->view->assign("eduGreenList", $this->model->getEduGreenList());
         $this->view->assign("marriageList", $this->model->getMarriageList());
@@ -71,7 +71,7 @@ class Vilager extends Backend
             foreach ($list as $row) {
                 $row->visible(['id','vilagername','phone','sex','age','idcode','edu_green','marriage','status','author']);
                 $row->visible(['family']);
-				$row->getRelation('family')->visible(['family_vilagers']);
+				$row->getRelation('family')->visible(['family_vilager_ids']);
 				$row->visible(['gro']);
 				$row->getRelation('gro')->visible(['name']);
             }

@@ -1,34 +1,28 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\admin\controller\register;
 
 use app\common\controller\Backend;
 
 /**
- * 村民管理
+ * 村组管理
  *
  * @icon fa fa-circle-o
  */
-class Vilager extends Backend
+class Gro extends Backend
 {
     
     /**
-     * Vilager模型对象
-     * @var \app\admin\model\Vilager
+     * Gro模型对象
+     * @var \app\admin\model\register\Gro
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\Vilager;
-        $this->view->assign("sexList", $this->model->getSexList());
-        $this->view->assign("eduGreenList", $this->model->getEduGreenList());
-        $this->view->assign("marriageList", $this->model->getMarriageList());
-        $this->view->assign("vStatusList", $this->model->getVStatusList());
-        $this->view->assign("statusList", $this->model->getStatusList());
-        $this->view->assign("familyMoveList", $this->model->getFamilyMoveList());
-        $this->view->assign("authorList", $this->model->getAuthorList());
+        $this->model = new \app\admin\model\register\Gro;
+
     }
     
     /**
@@ -56,24 +50,22 @@ class Vilager extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
-                    ->with(['family','gro'])
+                    ->with(['vilager'])
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['family','gro'])
+                    ->with(['vilager'])
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['id','vilagername','phone','sex','age','idcode','edu_green','marriage','status','author']);
-                $row->visible(['family']);
-				$row->getRelation('family')->visible(['family_vilagers']);
-				$row->visible(['gro']);
-				$row->getRelation('gro')->visible(['name']);
+                $row->visible(['id','name']);
+                $row->visible(['vilager']);
+				$row->getRelation('vilager')->visible(['vilagername','phone','edu_green']);
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);

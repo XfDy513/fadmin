@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\model;
+namespace app\admin\model\register;
 
 use think\Model;
 
@@ -132,12 +132,12 @@ class Vilager extends Model
 
     public function family()
     {
-        return $this->belongsTo('Family', 'fam_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\Family', 'fam_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 
 
     public function gro()
     {
-        return $this->belongsTo('Gro', 'gro_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $this->belongsTo('app\admin\model\Gro', 'gro_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }
