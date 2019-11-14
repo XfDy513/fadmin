@@ -69,7 +69,7 @@ class Gro extends Backend
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
-
+            //dump($result);die;
             return json($result);
         }
         return $this->view->fetch();

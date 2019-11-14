@@ -5,7 +5,7 @@ return [
     'Vilagername'               => '姓名',
     'Phone'                     => '电话',
     'Sex'                       => '性别',
-    'Birthday'                  => '出生年月',
+    'Birthday_time'             => '出生时间',
     'Age'                       => '年龄',
     'Idcode'                    => '身份证号',
     'Edu_green'                 => '学历',
