@@ -28,8 +28,12 @@ class Vilager extends Model
         'sex_text',
         'edu_green_text',
         'marriage_text',
+        'move_in_time_text',
+        'move_out_time_text',
         'v_status_text',
         'status_text',
+        'allocation_start_time_text',
+        'allocation_end_time_text',
         'family_move_text',
         'author_text'
     ];
@@ -96,6 +100,20 @@ class Vilager extends Model
     }
 
 
+    public function getMoveInTimeTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['move_in_time']) ? $data['move_in_time'] : '');
+        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    }
+
+
+    public function getMoveOutTimeTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['move_out_time']) ? $data['move_out_time'] : '');
+        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    }
+
+
     public function getVStatusTextAttr($value, $data)
     {
         $value = $value ? $value : (isset($data['v_status']) ? $data['v_status'] : '');
@@ -109,6 +127,20 @@ class Vilager extends Model
         $value = $value ? $value : (isset($data['status']) ? $data['status'] : '');
         $list = $this->getStatusList();
         return isset($list[$value]) ? $list[$value] : '';
+    }
+
+
+    public function getAllocationStartTimeTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['allocation_start_time']) ? $data['allocation_start_time'] : '');
+        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    }
+
+
+    public function getAllocationEndTimeTextAttr($value, $data)
+    {
+        $value = $value ? $value : (isset($data['allocation_end_time']) ? $data['allocation_end_time'] : '');
+        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
     }
 
 
@@ -127,17 +159,35 @@ class Vilager extends Model
         return isset($list[$value]) ? $list[$value] : '';
     }
 
-
-
-
-    public function family()
+    protected function setMoveInTimeAttr($value)
     {
-        return $this->belongsTo('Family', 'fam_id', 'id', [], 'LEFT')->setEagerlyType(0);
+        return $value === '' ? null : ($value && !is_numeric($value) ? strtotime($value) : $value);
+    }
+
+    protected function setMoveOutTimeAttr($value)
+    {
+        return $value === '' ? null : ($value && !is_numeric($value) ? strtotime($value) : $value);
+    }
+
+    protected function setAllocationStartTimeAttr($value)
+    {
+        return $value === '' ? null : ($value && !is_numeric($value) ? strtotime($value) : $value);
+    }
+
+    protected function setAllocationEndTimeAttr($value)
+    {
+        return $value === '' ? null : ($value && !is_numeric($value) ? strtotime($value) : $value);
     }
 
 
     public function gro()
     {
         return $this->belongsTo('Gro', 'gro_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+
+    public function family()
+    {
+        return $this->belongsTo('Family', 'fam_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }

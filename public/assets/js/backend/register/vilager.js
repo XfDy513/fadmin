@@ -34,8 +34,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'marriage', title: __('Marriage'), searchList: {"已婚":__('已婚'),"未婚":__('未婚')}, formatter: Table.api.formatter.normal},
                         {field: 'status', title: __('Status'), searchList: {"正常":__('正常'),"失踪":__('失踪'),"死亡":__('死亡'),"迁出":__('迁出')}, formatter: Table.api.formatter.status},
                         {field: 'author', title: __('Author'), searchList: {"户主":__('户主'),"家庭成员":__('家庭成员')}, formatter: Table.api.formatter.normal},
-                        {field: 'family.family_vilager_ids', title: __('Family.family_vilager_ids')},
                         {field: 'gro.name', title: __('Gro.name')},
+                        {field: 'family.family_vilager_ids', title: __('Family.family_vilager_ids')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

@@ -14,14 +14,14 @@ class Family extends Backend
     
     /**
      * Family模型对象
-     * @var \app\admin\model\register\Family
+     * @var \app\admin\model\Family
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\register\Family;
+        $this->model = new \app\admin\model\Family;
 
     }
     
@@ -63,9 +63,9 @@ class Family extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['id','family_vilager_ids']);
+                $row->visible(['id','v_id','family_vilager_ids']);
                 $row->visible(['vilager']);
-				$row->getRelation('vilager')->visible(['vilagername','phone','sex','age','idcode','edu_green','marriage','status','author']);
+				$row->getRelation('vilager')->visible(['vilagername','phone']);
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);

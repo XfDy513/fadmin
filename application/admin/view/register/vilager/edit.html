@@ -69,13 +69,13 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Move_in_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-move_in_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[move_in_time]" type="text" value="{$row.move_in_time}">
+            <input id="c-move_in_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[move_in_time]" type="text" value="{:$row.move_in_time?datetime($row.move_in_time):''}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Move_out_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-move_out_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[move_out_time]" type="text" value="{$row.move_out_time}">
+            <input id="c-move_out_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[move_out_time]" type="text" value="{:$row.move_out_time?datetime($row.move_out_time):''}">
         </div>
     </div>
     <div class="form-group">
@@ -123,13 +123,13 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Allocation_start_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-allocation_start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[allocation_start_time]" type="text" value="{$row.allocation_start_time}">
+            <input id="c-allocation_start_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[allocation_start_time]" type="text" value="{:$row.allocation_start_time?datetime($row.allocation_start_time):''}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Allocation_end_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-allocation_end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[allocation_end_time]" type="text" value="{$row.allocation_end_time}">
+            <input id="c-allocation_end_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[allocation_end_time]" type="text" value="{:$row.allocation_end_time?datetime($row.allocation_end_time):''}">
         </div>
     </div>
     <div class="form-group">

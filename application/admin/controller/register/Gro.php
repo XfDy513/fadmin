@@ -14,14 +14,14 @@ class Gro extends Backend
     
     /**
      * Gro模型对象
-     * @var \app\admin\model\register\Gro
+     * @var \app\admin\model\Gro
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\register\Gro;
+        $this->model = new \app\admin\model\Gro;
 
     }
     
@@ -38,7 +38,7 @@ class Gro extends Backend
     public function index()
     {
         //当前是否为关联查询
-        $this->relationSearch = true;
+        $this->relationSearch = false;
         //设置过滤方法
         $this->request->filter(['strip_tags', 'trim']);
         if ($this->request->isAjax())
@@ -50,22 +50,21 @@ class Gro extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
-                    ->with(['vilager'])
+                    
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['vilager'])
+                    
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['id','name']);
-                $row->visible(['vilager']);
-				$row->getRelation('vilager')->visible(['vilagername','phone','edu_green']);
+                $row->visible(['id','name','lead_cadre']);
+                
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
